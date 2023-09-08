@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS customers (
                                          username text,
                                          surname text,
                                          phone VARCHAR(20) NOT NULL UNIQUE,
-    customers_id INT,
-    customers_fk INT);
+                                         customers_id INT,
+                                         customers_fk INT);
 
 INSERT INTO customers (id, username, surname, phone) values
                                                          (2, 'Vadim', 'Curl', 1234567),

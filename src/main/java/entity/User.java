@@ -1,26 +1,29 @@
 package entity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Table;
 
-@Entity
+import java.util.List;
+
 @Getter
 @Setter
-@Table(name = "users")
+@Entity(name = "users")
 public class User {
+
+
     @Id
     @Column (name = "id")
     private Integer id;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "users_num")
-    private int usersNum;
+    private String username;
+    private String email;
+    private String role;
 
     @Column(name = "users_fk")
-    private int usersFk;
+    private Integer usersFk;
 
-    @OneToMany
-    private Orders orders;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    private List<Order> orders;
 
     @OneToOne
     private Customer customers;

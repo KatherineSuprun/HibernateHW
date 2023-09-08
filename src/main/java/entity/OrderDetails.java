@@ -1,12 +1,14 @@
 package entity;
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.Table;
+import java.time.LocalDateTime;
+import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "order_details")
+@Table(name = "orders_details")
 public class OrderDetails {
 
     @Id
@@ -15,10 +17,12 @@ public class OrderDetails {
     private Integer id;
 
     @Column (name = "time_placed")
-    private Integer timePlaced;
+    private LocalDateTime timePlaced;
 
     @Column (name = "time_updated")
-    private Integer timeUpdated;
+    private LocalDateTime timeUpdated;
 
-    @ManyToMany
-    private Order orders;
+    @ManyToMany(mappedBy = "orders_orders_details")
+    private List<Order> orders;
+}
+

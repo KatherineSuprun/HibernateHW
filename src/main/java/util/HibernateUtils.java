@@ -1,6 +1,6 @@
 package util;
 
-import entity.User;
+import entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -11,7 +11,14 @@ public class HibernateUtils {
         if (sessionFactory == null) {
             try {
                 sessionFactory = new Configuration()
-                        // addAnnotatedClass(User.class)
+                        .addAnnotatedClass(Product.class)
+                        .addAnnotatedClass(User.class)
+                        .addAnnotatedClass(Order.class)
+                        .addAnnotatedClass(Customer.class)
+                       // .addAnnotatedClass(OrderDetails.class)
+                        .addAnnotatedClass(OrderOrderDetails.class)
+                        .addAnnotatedClass(OrderCustomer.class)
+                        .addAnnotatedClass(ProductOrder.class)
                         .buildSessionFactory();
             } catch (Exception e) {
                 System.out.println(e.getMessage());

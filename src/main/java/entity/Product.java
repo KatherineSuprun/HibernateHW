@@ -1,12 +1,13 @@
 package entity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Table;
 
-@Entity
+
+import java.util.List;
+
 @Getter
 @Setter
-@Table(name = "products")
+@Entity(name = "products")
 
 public class Product {
 
@@ -14,10 +15,9 @@ public class Product {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String nname;
+    private Integer quantity;
 
     @ManyToMany
-    Customer customers;
-
-    @ManyToMany
-    Order orders;
+    private List<Order> orders;
 }
