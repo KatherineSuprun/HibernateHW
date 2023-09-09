@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -32,8 +35,10 @@ public class Customer {
     @OneToMany
     private List<OrderDetails> orderDetails;
 
-    @ManyToMany(mappedBy = "orders_customers")
+    @ManyToMany
+    @JoinTable(name = "order_customers",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id"))
     private List<Order> orderList;
-
 
 }

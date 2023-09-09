@@ -1,5 +1,6 @@
-package dao;
+package Service;
 
+import dao.ProductDaoImpl;
 import entity.Product;
 
 import java.util.List;

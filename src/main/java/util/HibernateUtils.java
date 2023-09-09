@@ -15,10 +15,7 @@ public class HibernateUtils {
                         .addAnnotatedClass(User.class)
                         .addAnnotatedClass(Order.class)
                         .addAnnotatedClass(Customer.class)
-                       // .addAnnotatedClass(OrderDetails.class)
-                        .addAnnotatedClass(OrderOrderDetails.class)
-                        .addAnnotatedClass(OrderCustomer.class)
-                        .addAnnotatedClass(ProductOrder.class)
+                        .addAnnotatedClass(OrderDetails.class)
                         .buildSessionFactory();
             } catch (Exception e) {
                 System.out.println(e.getMessage());

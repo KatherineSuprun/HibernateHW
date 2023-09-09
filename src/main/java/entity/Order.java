@@ -1,8 +1,9 @@
 package entity;
 import jakarta.persistence.*;
 import lombok.*;
-
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -28,14 +29,20 @@ public class Order {
     private Customer customers;
 
     @ManyToMany
-    @JoinTable(name = "orders_orders_details",
-            joinColumns = @JoinColumn(name = "orders_id"),
-            inverseJoinColumns = @JoinColumn(name = "orders_details_id"))
-    private List <OrderDetails> orderDetails;
+    @JoinTable(name = "orders_product",
+    joinColumns = @JoinColumn(name = "orders_id"),
+    inverseJoinColumns = @JoinColumn (name = "products_id"))
+    private List<Product> productsList;
+
+    @ManyToMany(mappedBy = "shopProducts")
+    private List<Customer> customerList;
 
     @ManyToMany
-    @JoinTable(name = "orders_customers",
+    @JoinTable(name = "orders_orders_details",
             joinColumns = @JoinColumn(name = "orders_id"),
-            inverseJoinColumns = @JoinColumn(name = "customers_id"))
-    private List <Customer> customersList;
+            inverseJoinColumns = @JoinColumn (name = "orders_details_id"))
+    private List<OrderDetails> orderDetailsList;
+
+
+
 }

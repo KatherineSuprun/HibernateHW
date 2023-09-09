@@ -22,7 +22,7 @@ public class OrderDetails {
     @Column (name = "time_updated")
     private LocalDateTime timeUpdated;
 
-    @ManyToMany(mappedBy = "orders_orders_details")
-    private List<Order> orders;
+    @ManyToMany(mappedBy = "orders")
+    private List<OrderDetails> orderDetails;
 }
 

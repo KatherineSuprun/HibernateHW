@@ -15,9 +15,10 @@ public class Product {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "nname")
     private String nname;
     private Integer quantity;
 
-    @ManyToMany
-    private List<Order> orders;
+    @ManyToMany(mappedBy = "productsList")
+    private List<Order> ordersList;
 }
